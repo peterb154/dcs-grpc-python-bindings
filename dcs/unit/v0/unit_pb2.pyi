@@ -38,39 +38,17 @@ class GetTransformRequest(_message.Message):
     name: str
     def __init__(self, name: _Optional[str] = ...) -> None: ...
 
-class Orientation(_message.Message):
-    __slots__ = ["forward", "right", "up", "yaw", "pitch", "roll"]
-    FORWARD_FIELD_NUMBER: _ClassVar[int]
-    RIGHT_FIELD_NUMBER: _ClassVar[int]
-    UP_FIELD_NUMBER: _ClassVar[int]
-    YAW_FIELD_NUMBER: _ClassVar[int]
-    PITCH_FIELD_NUMBER: _ClassVar[int]
-    ROLL_FIELD_NUMBER: _ClassVar[int]
-    forward: _common_pb2.Vector
-    right: _common_pb2.Vector
-    up: _common_pb2.Vector
-    yaw: float
-    pitch: float
-    roll: float
-    def __init__(self, forward: _Optional[_Union[_common_pb2.Vector, _Mapping]] = ..., right: _Optional[_Union[_common_pb2.Vector, _Mapping]] = ..., up: _Optional[_Union[_common_pb2.Vector, _Mapping]] = ..., yaw: _Optional[float] = ..., pitch: _Optional[float] = ..., roll: _Optional[float] = ...) -> None: ...
-
 class GetTransformResponse(_message.Message):
-    __slots__ = ["position", "u", "v", "heading", "orientation", "velocity", "time"]
+    __slots__ = ["time", "position", "orientation", "velocity"]
+    TIME_FIELD_NUMBER: _ClassVar[int]
     POSITION_FIELD_NUMBER: _ClassVar[int]
-    U_FIELD_NUMBER: _ClassVar[int]
-    V_FIELD_NUMBER: _ClassVar[int]
-    HEADING_FIELD_NUMBER: _ClassVar[int]
     ORIENTATION_FIELD_NUMBER: _ClassVar[int]
     VELOCITY_FIELD_NUMBER: _ClassVar[int]
-    TIME_FIELD_NUMBER: _ClassVar[int]
-    position: _common_pb2.Position
-    u: float
-    v: float
-    heading: float
-    orientation: Orientation
-    velocity: _common_pb2.Vector
     time: float
-    def __init__(self, position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., u: _Optional[float] = ..., v: _Optional[float] = ..., heading: _Optional[float] = ..., orientation: _Optional[_Union[Orientation, _Mapping]] = ..., velocity: _Optional[_Union[_common_pb2.Vector, _Mapping]] = ..., time: _Optional[float] = ...) -> None: ...
+    position: _common_pb2.Position
+    orientation: _common_pb2.Orientation
+    velocity: _common_pb2.Velocity
+    def __init__(self, time: _Optional[float] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., orientation: _Optional[_Union[_common_pb2.Orientation, _Mapping]] = ..., velocity: _Optional[_Union[_common_pb2.Velocity, _Mapping]] = ...) -> None: ...
 
 class GetPlayerNameRequest(_message.Message):
     __slots__ = ["name"]

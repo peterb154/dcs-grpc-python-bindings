@@ -19,6 +19,11 @@ class ControllerServiceStub(object):
                 request_serializer=dcs_dot_controller_dot_v0_dot_controller__pb2.SetAlarmStateRequest.SerializeToString,
                 response_deserializer=dcs_dot_controller_dot_v0_dot_controller__pb2.SetAlarmStateResponse.FromString,
                 )
+        self.GetDetectedTargets = channel.unary_unary(
+                '/dcs.controller.v0.ControllerService/GetDetectedTargets',
+                request_serializer=dcs_dot_controller_dot_v0_dot_controller__pb2.GetDetectedTargetsRequest.SerializeToString,
+                response_deserializer=dcs_dot_controller_dot_v0_dot_controller__pb2.GetDetectedTargetsResponse.FromString,
+                )
 
 
 class ControllerServiceServicer(object):
@@ -31,6 +36,13 @@ class ControllerServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetDetectedTargets(self, request, context):
+        """https://wiki.hoggitworld.com/view/DCS_func_getDetectedTargets
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ControllerServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -38,6 +50,11 @@ def add_ControllerServiceServicer_to_server(servicer, server):
                     servicer.SetAlarmState,
                     request_deserializer=dcs_dot_controller_dot_v0_dot_controller__pb2.SetAlarmStateRequest.FromString,
                     response_serializer=dcs_dot_controller_dot_v0_dot_controller__pb2.SetAlarmStateResponse.SerializeToString,
+            ),
+            'GetDetectedTargets': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDetectedTargets,
+                    request_deserializer=dcs_dot_controller_dot_v0_dot_controller__pb2.GetDetectedTargetsRequest.FromString,
+                    response_serializer=dcs_dot_controller_dot_v0_dot_controller__pb2.GetDetectedTargetsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -63,5 +80,22 @@ class ControllerService(object):
         return grpc.experimental.unary_unary(request, target, '/dcs.controller.v0.ControllerService/SetAlarmState',
             dcs_dot_controller_dot_v0_dot_controller__pb2.SetAlarmStateRequest.SerializeToString,
             dcs_dot_controller_dot_v0_dot_controller__pb2.SetAlarmStateResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetDetectedTargets(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/dcs.controller.v0.ControllerService/GetDetectedTargets',
+            dcs_dot_controller_dot_v0_dot_controller__pb2.GetDetectedTargetsRequest.SerializeToString,
+            dcs_dot_controller_dot_v0_dot_controller__pb2.GetDetectedTargetsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
