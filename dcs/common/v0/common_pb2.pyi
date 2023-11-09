@@ -237,6 +237,20 @@ GROUP_CATEGORY_SHIP: GroupCategory
 GROUP_CATEGORY_TRAIN: GroupCategory
 
 class Position(_message.Message):
+    __slots__ = ["lat", "lon", "alt", "u", "v"]
+    LAT_FIELD_NUMBER: _ClassVar[int]
+    LON_FIELD_NUMBER: _ClassVar[int]
+    ALT_FIELD_NUMBER: _ClassVar[int]
+    U_FIELD_NUMBER: _ClassVar[int]
+    V_FIELD_NUMBER: _ClassVar[int]
+    lat: float
+    lon: float
+    alt: float
+    u: float
+    v: float
+    def __init__(self, lat: _Optional[float] = ..., lon: _Optional[float] = ..., alt: _Optional[float] = ..., u: _Optional[float] = ..., v: _Optional[float] = ...) -> None: ...
+
+class InputPosition(_message.Message):
     __slots__ = ["lat", "lon", "alt"]
     LAT_FIELD_NUMBER: _ClassVar[int]
     LON_FIELD_NUMBER: _ClassVar[int]
@@ -253,32 +267,30 @@ class Unknown(_message.Message):
     def __init__(self, name: _Optional[str] = ...) -> None: ...
 
 class Unit(_message.Message):
-    __slots__ = ["id", "name", "callsign", "coalition", "type", "position", "player_name", "group_name", "number_in_group", "speed", "heading", "category"]
+    __slots__ = ["id", "name", "callsign", "coalition", "type", "position", "orientation", "velocity", "player_name", "group", "number_in_group"]
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     CALLSIGN_FIELD_NUMBER: _ClassVar[int]
     COALITION_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     POSITION_FIELD_NUMBER: _ClassVar[int]
+    ORIENTATION_FIELD_NUMBER: _ClassVar[int]
+    VELOCITY_FIELD_NUMBER: _ClassVar[int]
     PLAYER_NAME_FIELD_NUMBER: _ClassVar[int]
-    GROUP_NAME_FIELD_NUMBER: _ClassVar[int]
+    GROUP_FIELD_NUMBER: _ClassVar[int]
     NUMBER_IN_GROUP_FIELD_NUMBER: _ClassVar[int]
-    SPEED_FIELD_NUMBER: _ClassVar[int]
-    HEADING_FIELD_NUMBER: _ClassVar[int]
-    CATEGORY_FIELD_NUMBER: _ClassVar[int]
     id: int
     name: str
     callsign: str
     coalition: Coalition
     type: str
     position: Position
+    orientation: Orientation
+    velocity: Velocity
     player_name: str
-    group_name: str
+    group: Group
     number_in_group: int
-    speed: float
-    heading: float
-    category: GroupCategory
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., callsign: _Optional[str] = ..., coalition: _Optional[_Union[Coalition, str]] = ..., type: _Optional[str] = ..., position: _Optional[_Union[Position, _Mapping]] = ..., player_name: _Optional[str] = ..., group_name: _Optional[str] = ..., number_in_group: _Optional[int] = ..., speed: _Optional[float] = ..., heading: _Optional[float] = ..., category: _Optional[_Union[GroupCategory, str]] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., callsign: _Optional[str] = ..., coalition: _Optional[_Union[Coalition, str]] = ..., type: _Optional[str] = ..., position: _Optional[_Union[Position, _Mapping]] = ..., orientation: _Optional[_Union[Orientation, _Mapping]] = ..., velocity: _Optional[_Union[Velocity, _Mapping]] = ..., player_name: _Optional[str] = ..., group: _Optional[_Union[Group, _Mapping]] = ..., number_in_group: _Optional[int] = ...) -> None: ...
 
 class Group(_message.Message):
     __slots__ = ["id", "name", "coalition", "category"]
@@ -293,14 +305,18 @@ class Group(_message.Message):
     def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., coalition: _Optional[_Union[Coalition, str]] = ..., category: _Optional[_Union[GroupCategory, str]] = ...) -> None: ...
 
 class Weapon(_message.Message):
-    __slots__ = ["id", "type", "position"]
+    __slots__ = ["id", "type", "position", "orientation", "velocity"]
     ID_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     POSITION_FIELD_NUMBER: _ClassVar[int]
+    ORIENTATION_FIELD_NUMBER: _ClassVar[int]
+    VELOCITY_FIELD_NUMBER: _ClassVar[int]
     id: int
     type: str
     position: Position
-    def __init__(self, id: _Optional[int] = ..., type: _Optional[str] = ..., position: _Optional[_Union[Position, _Mapping]] = ...) -> None: ...
+    orientation: Orientation
+    velocity: Velocity
+    def __init__(self, id: _Optional[int] = ..., type: _Optional[str] = ..., position: _Optional[_Union[Position, _Mapping]] = ..., orientation: _Optional[_Union[Orientation, _Mapping]] = ..., velocity: _Optional[_Union[Velocity, _Mapping]] = ...) -> None: ...
 
 class Static(_message.Message):
     __slots__ = ["id", "type", "name", "coalition", "position"]
@@ -317,32 +333,32 @@ class Static(_message.Message):
     def __init__(self, id: _Optional[int] = ..., type: _Optional[str] = ..., name: _Optional[str] = ..., coalition: _Optional[_Union[Coalition, str]] = ..., position: _Optional[_Union[Position, _Mapping]] = ...) -> None: ...
 
 class Scenery(_message.Message):
-    __slots__ = ["type", "name", "position"]
+    __slots__ = ["id", "type", "position"]
+    ID_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
     POSITION_FIELD_NUMBER: _ClassVar[int]
+    id: int
     type: str
-    name: str
     position: Position
-    def __init__(self, type: _Optional[str] = ..., name: _Optional[str] = ..., position: _Optional[_Union[Position, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., type: _Optional[str] = ..., position: _Optional[_Union[Position, _Mapping]] = ...) -> None: ...
 
 class Airbase(_message.Message):
-    __slots__ = ["id", "name", "callsign", "coalition", "position", "category", "display_name"]
-    ID_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["unit", "name", "callsign", "coalition", "position", "category", "display_name"]
+    UNIT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     CALLSIGN_FIELD_NUMBER: _ClassVar[int]
     COALITION_FIELD_NUMBER: _ClassVar[int]
     POSITION_FIELD_NUMBER: _ClassVar[int]
     CATEGORY_FIELD_NUMBER: _ClassVar[int]
     DISPLAY_NAME_FIELD_NUMBER: _ClassVar[int]
-    id: int
+    unit: Unit
     name: str
     callsign: str
     coalition: Coalition
     position: Position
     category: AirbaseCategory
     display_name: str
-    def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ..., callsign: _Optional[str] = ..., coalition: _Optional[_Union[Coalition, str]] = ..., position: _Optional[_Union[Position, _Mapping]] = ..., category: _Optional[_Union[AirbaseCategory, str]] = ..., display_name: _Optional[str] = ...) -> None: ...
+    def __init__(self, unit: _Optional[_Union[Unit, _Mapping]] = ..., name: _Optional[str] = ..., callsign: _Optional[str] = ..., coalition: _Optional[_Union[Coalition, str]] = ..., position: _Optional[_Union[Position, _Mapping]] = ..., category: _Optional[_Union[AirbaseCategory, str]] = ..., display_name: _Optional[str] = ...) -> None: ...
 
 class Cargo(_message.Message):
     __slots__ = []
@@ -411,3 +427,47 @@ class Vector(_message.Message):
     y: float
     z: float
     def __init__(self, x: _Optional[float] = ..., y: _Optional[float] = ..., z: _Optional[float] = ...) -> None: ...
+
+class Orientation(_message.Message):
+    __slots__ = ["heading", "yaw", "pitch", "roll", "forward", "right", "up"]
+    HEADING_FIELD_NUMBER: _ClassVar[int]
+    YAW_FIELD_NUMBER: _ClassVar[int]
+    PITCH_FIELD_NUMBER: _ClassVar[int]
+    ROLL_FIELD_NUMBER: _ClassVar[int]
+    FORWARD_FIELD_NUMBER: _ClassVar[int]
+    RIGHT_FIELD_NUMBER: _ClassVar[int]
+    UP_FIELD_NUMBER: _ClassVar[int]
+    heading: float
+    yaw: float
+    pitch: float
+    roll: float
+    forward: Vector
+    right: Vector
+    up: Vector
+    def __init__(self, heading: _Optional[float] = ..., yaw: _Optional[float] = ..., pitch: _Optional[float] = ..., roll: _Optional[float] = ..., forward: _Optional[_Union[Vector, _Mapping]] = ..., right: _Optional[_Union[Vector, _Mapping]] = ..., up: _Optional[_Union[Vector, _Mapping]] = ...) -> None: ...
+
+class Velocity(_message.Message):
+    __slots__ = ["heading", "speed", "velocity"]
+    HEADING_FIELD_NUMBER: _ClassVar[int]
+    SPEED_FIELD_NUMBER: _ClassVar[int]
+    VELOCITY_FIELD_NUMBER: _ClassVar[int]
+    heading: float
+    speed: float
+    velocity: Vector
+    def __init__(self, heading: _Optional[float] = ..., speed: _Optional[float] = ..., velocity: _Optional[_Union[Vector, _Mapping]] = ...) -> None: ...
+
+class Contact(_message.Message):
+    __slots__ = ["id", "visible", "distance", "object", "unit", "weapon"]
+    ID_FIELD_NUMBER: _ClassVar[int]
+    VISIBLE_FIELD_NUMBER: _ClassVar[int]
+    DISTANCE_FIELD_NUMBER: _ClassVar[int]
+    OBJECT_FIELD_NUMBER: _ClassVar[int]
+    UNIT_FIELD_NUMBER: _ClassVar[int]
+    WEAPON_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    visible: bool
+    distance: bool
+    object: Unknown
+    unit: Unit
+    weapon: Weapon
+    def __init__(self, id: _Optional[int] = ..., visible: bool = ..., distance: bool = ..., object: _Optional[_Union[Unknown, _Mapping]] = ..., unit: _Optional[_Union[Unit, _Mapping]] = ..., weapon: _Optional[_Union[Weapon, _Mapping]] = ...) -> None: ...

@@ -100,6 +100,16 @@ class HookServiceStub(object):
                 request_serializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetUnitTypeRequest.SerializeToString,
                 response_deserializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetUnitTypeResponse.FromString,
                 )
+        self.GetRealTime = channel.unary_unary(
+                '/dcs.hook.v0.HookService/GetRealTime',
+                request_serializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetRealTimeRequest.SerializeToString,
+                response_deserializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetRealTimeResponse.FromString,
+                )
+        self.GetBallisticsCount = channel.unary_unary(
+                '/dcs.hook.v0.HookService/GetBallisticsCount',
+                request_serializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetBallisticsCountRequest.SerializeToString,
+                response_deserializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetBallisticsCountResponse.FromString,
+                )
 
 
 class HookServiceServicer(object):
@@ -229,6 +239,20 @@ class HookServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetRealTime(self, request, context):
+        """https://wiki.hoggitworld.com/view/DCS_func_getRealTime
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetBallisticsCount(self, request, context):
+        """Get a count of ballistics objects
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_HookServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -316,6 +340,16 @@ def add_HookServiceServicer_to_server(servicer, server):
                     servicer.GetUnitType,
                     request_deserializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetUnitTypeRequest.FromString,
                     response_serializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetUnitTypeResponse.SerializeToString,
+            ),
+            'GetRealTime': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRealTime,
+                    request_deserializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetRealTimeRequest.FromString,
+                    response_serializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetRealTimeResponse.SerializeToString,
+            ),
+            'GetBallisticsCount': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetBallisticsCount,
+                    request_deserializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetBallisticsCountRequest.FromString,
+                    response_serializer=dcs_dot_hook_dot_v0_dot_hook__pb2.GetBallisticsCountResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -614,5 +648,39 @@ class HookService(object):
         return grpc.experimental.unary_unary(request, target, '/dcs.hook.v0.HookService/GetUnitType',
             dcs_dot_hook_dot_v0_dot_hook__pb2.GetUnitTypeRequest.SerializeToString,
             dcs_dot_hook_dot_v0_dot_hook__pb2.GetUnitTypeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetRealTime(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/dcs.hook.v0.HookService/GetRealTime',
+            dcs_dot_hook_dot_v0_dot_hook__pb2.GetRealTimeRequest.SerializeToString,
+            dcs_dot_hook_dot_v0_dot_hook__pb2.GetRealTimeResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetBallisticsCount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/dcs.hook.v0.HookService/GetBallisticsCount',
+            dcs_dot_hook_dot_v0_dot_hook__pb2.GetBallisticsCountRequest.SerializeToString,
+            dcs_dot_hook_dot_v0_dot_hook__pb2.GetBallisticsCountResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

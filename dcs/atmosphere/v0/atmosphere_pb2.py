@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 from dcs.common.v0 import common_pb2 as dcs_dot_common_dot_v0_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"dcs/atmosphere/v0/atmosphere.proto\x12\x11\x64\x63s.atmosphere.v0\x1a\x1a\x64\x63s/common/v0/common.proto\";\n\x0eGetWindRequest\x12)\n\x08position\x18\x01 \x01(\x0b\x32\x17.dcs.common.v0.Position\"4\n\x0fGetWindResponse\x12\x0f\n\x07heading\x18\x01 \x01(\x02\x12\x10\n\x08strength\x18\x02 \x01(\x02\"I\n\x1cGetWindWithTurbulenceRequest\x12)\n\x08position\x18\x01 \x01(\x0b\x32\x17.dcs.common.v0.Position\"B\n\x1dGetWindWithTurbulenceResponse\x12\x0f\n\x07heading\x18\x01 \x01(\x02\x12\x10\n\x08strength\x18\x02 \x01(\x02\"M\n GetTemperatureAndPressureRequest\x12)\n\x08position\x18\x01 \x01(\x0b\x32\x17.dcs.common.v0.Position\"J\n!GetTemperatureAndPressureResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x10\n\x08pressure\x18\x02 \x01(\x02\x32\xf0\x02\n\x11\x41tmosphereService\x12R\n\x07GetWind\x12!.dcs.atmosphere.v0.GetWindRequest\x1a\".dcs.atmosphere.v0.GetWindResponse\"\x00\x12|\n\x15GetWindWithTurbulence\x12/.dcs.atmosphere.v0.GetWindWithTurbulenceRequest\x1a\x30.dcs.atmosphere.v0.GetWindWithTurbulenceResponse\"\x00\x12\x88\x01\n\x19GetTemperatureAndPressure\x12\x33.dcs.atmosphere.v0.GetTemperatureAndPressureRequest\x1a\x34.dcs.atmosphere.v0.GetTemperatureAndPressureResponse\"\x00\x42YZ1github.com/DCS-gRPC/go-bindings/dcs/v0/atmosphere\xaa\x02#RurouniJones.Dcs.Grpc.V0.Atmosphereb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"dcs/atmosphere/v0/atmosphere.proto\x12\x11\x64\x63s.atmosphere.v0\x1a\x1a\x64\x63s/common/v0/common.proto\"@\n\x0eGetWindRequest\x12.\n\x08position\x18\x01 \x01(\x0b\x32\x1c.dcs.common.v0.InputPosition\"4\n\x0fGetWindResponse\x12\x0f\n\x07heading\x18\x01 \x01(\x02\x12\x10\n\x08strength\x18\x02 \x01(\x02\"N\n\x1cGetWindWithTurbulenceRequest\x12.\n\x08position\x18\x01 \x01(\x0b\x32\x1c.dcs.common.v0.InputPosition\"B\n\x1dGetWindWithTurbulenceResponse\x12\x0f\n\x07heading\x18\x01 \x01(\x02\x12\x10\n\x08strength\x18\x02 \x01(\x02\"R\n GetTemperatureAndPressureRequest\x12.\n\x08position\x18\x01 \x01(\x0b\x32\x1c.dcs.common.v0.InputPosition\"J\n!GetTemperatureAndPressureResponse\x12\x13\n\x0btemperature\x18\x01 \x01(\x02\x12\x10\n\x08pressure\x18\x02 \x01(\x02\x32\xf0\x02\n\x11\x41tmosphereService\x12R\n\x07GetWind\x12!.dcs.atmosphere.v0.GetWindRequest\x1a\".dcs.atmosphere.v0.GetWindResponse\"\x00\x12|\n\x15GetWindWithTurbulence\x12/.dcs.atmosphere.v0.GetWindWithTurbulenceRequest\x1a\x30.dcs.atmosphere.v0.GetWindWithTurbulenceResponse\"\x00\x12\x88\x01\n\x19GetTemperatureAndPressure\x12\x33.dcs.atmosphere.v0.GetTemperatureAndPressureRequest\x1a\x34.dcs.atmosphere.v0.GetTemperatureAndPressureResponse\"\x00\x42YZ1github.com/DCS-gRPC/go-bindings/dcs/v0/atmosphere\xaa\x02#RurouniJones.Dcs.Grpc.V0.Atmosphereb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,17 +23,17 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'Z1github.com/DCS-gRPC/go-bindings/dcs/v0/atmosphere\252\002#RurouniJones.Dcs.Grpc.V0.Atmosphere'
   _globals['_GETWINDREQUEST']._serialized_start=85
-  _globals['_GETWINDREQUEST']._serialized_end=144
-  _globals['_GETWINDRESPONSE']._serialized_start=146
-  _globals['_GETWINDRESPONSE']._serialized_end=198
-  _globals['_GETWINDWITHTURBULENCEREQUEST']._serialized_start=200
-  _globals['_GETWINDWITHTURBULENCEREQUEST']._serialized_end=273
-  _globals['_GETWINDWITHTURBULENCERESPONSE']._serialized_start=275
-  _globals['_GETWINDWITHTURBULENCERESPONSE']._serialized_end=341
-  _globals['_GETTEMPERATUREANDPRESSUREREQUEST']._serialized_start=343
-  _globals['_GETTEMPERATUREANDPRESSUREREQUEST']._serialized_end=420
-  _globals['_GETTEMPERATUREANDPRESSURERESPONSE']._serialized_start=422
-  _globals['_GETTEMPERATUREANDPRESSURERESPONSE']._serialized_end=496
-  _globals['_ATMOSPHERESERVICE']._serialized_start=499
-  _globals['_ATMOSPHERESERVICE']._serialized_end=867
+  _globals['_GETWINDREQUEST']._serialized_end=149
+  _globals['_GETWINDRESPONSE']._serialized_start=151
+  _globals['_GETWINDRESPONSE']._serialized_end=203
+  _globals['_GETWINDWITHTURBULENCEREQUEST']._serialized_start=205
+  _globals['_GETWINDWITHTURBULENCEREQUEST']._serialized_end=283
+  _globals['_GETWINDWITHTURBULENCERESPONSE']._serialized_start=285
+  _globals['_GETWINDWITHTURBULENCERESPONSE']._serialized_end=351
+  _globals['_GETTEMPERATUREANDPRESSUREREQUEST']._serialized_start=353
+  _globals['_GETTEMPERATUREANDPRESSUREREQUEST']._serialized_end=435
+  _globals['_GETTEMPERATUREANDPRESSURERESPONSE']._serialized_start=437
+  _globals['_GETTEMPERATUREANDPRESSURERESPONSE']._serialized_end=511
+  _globals['_ATMOSPHERESERVICE']._serialized_start=514
+  _globals['_ATMOSPHERESERVICE']._serialized_end=882
 # @@protoc_insertion_point(module_scope)
