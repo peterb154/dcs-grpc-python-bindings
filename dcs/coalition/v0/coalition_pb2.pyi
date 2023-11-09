@@ -42,7 +42,7 @@ class AddGroupRequest(_message.Message):
         hidden: bool
         late_activation: bool
         name: str
-        position: _common_pb2.Position
+        position: _common_pb2.InputPosition
         waypoints: _containers.RepeatedCompositeFieldContainer[AddGroupRequest.Point]
         start_time: int
         task: str
@@ -51,7 +51,7 @@ class AddGroupRequest(_message.Message):
         uncontrollable: bool
         units: _containers.RepeatedCompositeFieldContainer[AddGroupRequest.GroundUnitTemplate]
         visible: bool
-        def __init__(self, group_id: _Optional[int] = ..., hidden: bool = ..., late_activation: bool = ..., name: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., waypoints: _Optional[_Iterable[_Union[AddGroupRequest.Point, _Mapping]]] = ..., start_time: _Optional[int] = ..., task: _Optional[str] = ..., task_selected: bool = ..., tasks: _Optional[_Iterable[_Union[AddGroupRequest.Task, _Mapping]]] = ..., uncontrollable: bool = ..., units: _Optional[_Iterable[_Union[AddGroupRequest.GroundUnitTemplate, _Mapping]]] = ..., visible: bool = ...) -> None: ...
+        def __init__(self, group_id: _Optional[int] = ..., hidden: bool = ..., late_activation: bool = ..., name: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., waypoints: _Optional[_Iterable[_Union[AddGroupRequest.Point, _Mapping]]] = ..., start_time: _Optional[int] = ..., task: _Optional[str] = ..., task_selected: bool = ..., tasks: _Optional[_Iterable[_Union[AddGroupRequest.Task, _Mapping]]] = ..., uncontrollable: bool = ..., units: _Optional[_Iterable[_Union[AddGroupRequest.GroundUnitTemplate, _Mapping]]] = ..., visible: bool = ...) -> None: ...
     class GroundUnitTemplate(_message.Message):
         __slots__ = ["name", "type", "position", "unit_id", "heading", "skill"]
         NAME_FIELD_NUMBER: _ClassVar[int]
@@ -62,11 +62,11 @@ class AddGroupRequest(_message.Message):
         SKILL_FIELD_NUMBER: _ClassVar[int]
         name: str
         type: str
-        position: _common_pb2.Position
+        position: _common_pb2.InputPosition
         unit_id: int
         heading: int
         skill: AddGroupRequest.Skill
-        def __init__(self, name: _Optional[str] = ..., type: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., unit_id: _Optional[int] = ..., heading: _Optional[int] = ..., skill: _Optional[_Union[AddGroupRequest.Skill, str]] = ...) -> None: ...
+        def __init__(self, name: _Optional[str] = ..., type: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., unit_id: _Optional[int] = ..., heading: _Optional[int] = ..., skill: _Optional[_Union[AddGroupRequest.Skill, str]] = ...) -> None: ...
     class ShipGroupTemplate(_message.Message):
         __slots__ = []
         def __init__(self) -> None: ...
@@ -115,13 +115,13 @@ class AddGroupRequest(_message.Message):
         ACTION_FIELD_NUMBER: _ClassVar[int]
         FORM_FIELD_NUMBER: _ClassVar[int]
         SPEED_FIELD_NUMBER: _ClassVar[int]
-        position: _common_pb2.Position
+        position: _common_pb2.InputPosition
         altitude_type: AddGroupRequest.Point.AltitudeType
         type: AddGroupRequest.Point.PointType
         action: str
         form: str
         speed: float
-        def __init__(self, position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., altitude_type: _Optional[_Union[AddGroupRequest.Point.AltitudeType, str]] = ..., type: _Optional[_Union[AddGroupRequest.Point.PointType, str]] = ..., action: _Optional[str] = ..., form: _Optional[str] = ..., speed: _Optional[float] = ...) -> None: ...
+        def __init__(self, position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., altitude_type: _Optional[_Union[AddGroupRequest.Point.AltitudeType, str]] = ..., type: _Optional[_Union[AddGroupRequest.Point.PointType, str]] = ..., action: _Optional[str] = ..., form: _Optional[str] = ..., speed: _Optional[float] = ...) -> None: ...
     class Task(_message.Message):
         __slots__ = []
         def __init__(self) -> None: ...
@@ -175,9 +175,9 @@ class AddStaticObjectRequest(_message.Message):
     dead: bool
     rate: int
     heading: float
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     cargo_mass: int
-    def __init__(self, name: _Optional[str] = ..., country: _Optional[_Union[_common_pb2.Country, str]] = ..., type: _Optional[str] = ..., livery: _Optional[str] = ..., dead: bool = ..., rate: _Optional[int] = ..., heading: _Optional[float] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., cargo_mass: _Optional[int] = ...) -> None: ...
+    def __init__(self, name: _Optional[str] = ..., country: _Optional[_Union[_common_pb2.Country, str]] = ..., type: _Optional[str] = ..., livery: _Optional[str] = ..., dead: bool = ..., rate: _Optional[int] = ..., heading: _Optional[float] = ..., position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., cargo_mass: _Optional[int] = ...) -> None: ...
 
 class AddStaticObjectResponse(_message.Message):
     __slots__ = ["name"]

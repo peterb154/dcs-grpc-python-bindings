@@ -136,10 +136,10 @@ class MarkToAllRequest(_message.Message):
     READ_ONLY_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     text: str
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     read_only: bool
     message: str
-    def __init__(self, text: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, text: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
 
 class MarkToAllResponse(_message.Message):
     __slots__ = ["id"]
@@ -157,11 +157,11 @@ class MarkToCoalitionRequest(_message.Message):
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     id: int
     text: str
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     coalition: _common_pb2.Coalition
     read_only: bool
     message: str
-    def __init__(self, id: _Optional[int] = ..., text: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., coalition: _Optional[_Union[_common_pb2.Coalition, str]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., text: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., coalition: _Optional[_Union[_common_pb2.Coalition, str]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
 
 class MarkToCoalitionResponse(_message.Message):
     __slots__ = ["id"]
@@ -179,11 +179,11 @@ class MarkToGroupRequest(_message.Message):
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     id: int
     text: str
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     group_id: int
     read_only: bool
     message: str
-    def __init__(self, id: _Optional[int] = ..., text: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., group_id: _Optional[int] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., text: _Optional[str] = ..., position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., group_id: _Optional[int] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
 
 class MarkToGroupResponse(_message.Message):
     __slots__ = ["id"]
@@ -205,9 +205,9 @@ class ExplosionRequest(_message.Message):
     __slots__ = ["position", "power"]
     POSITION_FIELD_NUMBER: _ClassVar[int]
     POWER_FIELD_NUMBER: _ClassVar[int]
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     power: int
-    def __init__(self, position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., power: _Optional[int] = ...) -> None: ...
+    def __init__(self, position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., power: _Optional[int] = ...) -> None: ...
 
 class ExplosionResponse(_message.Message):
     __slots__ = []
@@ -231,9 +231,9 @@ class SmokeRequest(_message.Message):
     SMOKE_COLOR_BLUE: SmokeRequest.SmokeColor
     POSITION_FIELD_NUMBER: _ClassVar[int]
     COLOR_FIELD_NUMBER: _ClassVar[int]
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     color: SmokeRequest.SmokeColor
-    def __init__(self, position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., color: _Optional[_Union[SmokeRequest.SmokeColor, str]] = ...) -> None: ...
+    def __init__(self, position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., color: _Optional[_Union[SmokeRequest.SmokeColor, str]] = ...) -> None: ...
 
 class SmokeResponse(_message.Message):
     __slots__ = []
@@ -243,9 +243,9 @@ class IlluminationBombRequest(_message.Message):
     __slots__ = ["position", "power"]
     POSITION_FIELD_NUMBER: _ClassVar[int]
     POWER_FIELD_NUMBER: _ClassVar[int]
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     power: int
-    def __init__(self, position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., power: _Optional[int] = ...) -> None: ...
+    def __init__(self, position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., power: _Optional[int] = ...) -> None: ...
 
 class IlluminationBombResponse(_message.Message):
     __slots__ = []
@@ -268,10 +268,10 @@ class SignalFlareRequest(_message.Message):
     POSITION_FIELD_NUMBER: _ClassVar[int]
     COLOR_FIELD_NUMBER: _ClassVar[int]
     AZIMUTH_FIELD_NUMBER: _ClassVar[int]
-    position: _common_pb2.Position
+    position: _common_pb2.InputPosition
     color: SignalFlareRequest.FlareColor
     azimuth: int
-    def __init__(self, position: _Optional[_Union[_common_pb2.Position, _Mapping]] = ..., color: _Optional[_Union[SignalFlareRequest.FlareColor, str]] = ..., azimuth: _Optional[int] = ...) -> None: ...
+    def __init__(self, position: _Optional[_Union[_common_pb2.InputPosition, _Mapping]] = ..., color: _Optional[_Union[SignalFlareRequest.FlareColor, str]] = ..., azimuth: _Optional[int] = ...) -> None: ...
 
 class SignalFlareResponse(_message.Message):
     __slots__ = []
@@ -299,13 +299,13 @@ class MarkupToAllRequest(_message.Message):
     READ_ONLY_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     shape: Shape
-    points: _containers.RepeatedCompositeFieldContainer[_common_pb2.Position]
+    points: _containers.RepeatedCompositeFieldContainer[_common_pb2.InputPosition]
     border_color: Color
     fill_color: Color
     line_type: LineType
     read_only: bool
     message: str
-    def __init__(self, shape: _Optional[_Union[Shape, str]] = ..., points: _Optional[_Iterable[_Union[_common_pb2.Position, _Mapping]]] = ..., border_color: _Optional[_Union[Color, _Mapping]] = ..., fill_color: _Optional[_Union[Color, _Mapping]] = ..., line_type: _Optional[_Union[LineType, str]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, shape: _Optional[_Union[Shape, str]] = ..., points: _Optional[_Iterable[_Union[_common_pb2.InputPosition, _Mapping]]] = ..., border_color: _Optional[_Union[Color, _Mapping]] = ..., fill_color: _Optional[_Union[Color, _Mapping]] = ..., line_type: _Optional[_Union[LineType, str]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
 
 class MarkupToAllResponse(_message.Message):
     __slots__ = ["id"]
@@ -325,13 +325,13 @@ class MarkupToCoalitionRequest(_message.Message):
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     shape: Shape
     coalition: _common_pb2.Coalition
-    points: _containers.RepeatedCompositeFieldContainer[_common_pb2.Position]
+    points: _containers.RepeatedCompositeFieldContainer[_common_pb2.InputPosition]
     border_color: Color
     fill_color: Color
     line_type: LineType
     read_only: bool
     message: str
-    def __init__(self, shape: _Optional[_Union[Shape, str]] = ..., coalition: _Optional[_Union[_common_pb2.Coalition, str]] = ..., points: _Optional[_Iterable[_Union[_common_pb2.Position, _Mapping]]] = ..., border_color: _Optional[_Union[Color, _Mapping]] = ..., fill_color: _Optional[_Union[Color, _Mapping]] = ..., line_type: _Optional[_Union[LineType, str]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, shape: _Optional[_Union[Shape, str]] = ..., coalition: _Optional[_Union[_common_pb2.Coalition, str]] = ..., points: _Optional[_Iterable[_Union[_common_pb2.InputPosition, _Mapping]]] = ..., border_color: _Optional[_Union[Color, _Mapping]] = ..., fill_color: _Optional[_Union[Color, _Mapping]] = ..., line_type: _Optional[_Union[LineType, str]] = ..., read_only: bool = ..., message: _Optional[str] = ...) -> None: ...
 
 class MarkupToCoalitionResponse(_message.Message):
     __slots__ = ["id"]

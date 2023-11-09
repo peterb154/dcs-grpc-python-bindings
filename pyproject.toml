@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dcs-grpc"
-version = "0.6.0"
+version = "0.7.1"
 description = "Python bindings for the DCS gRPC API https://github.com/DCS-gRPC/rust-server"
 authors = ["Brian Peterson <brian.peterson@cloudshift.cc>"]
 readme = "README.md"

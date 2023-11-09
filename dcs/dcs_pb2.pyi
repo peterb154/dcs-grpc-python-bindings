@@ -9,6 +9,7 @@ from dcs.mission.v0 import mission_pb2 as _mission_pb2
 from dcs.net.v0 import net_pb2 as _net_pb2
 from dcs.timer.v0 import timer_pb2 as _timer_pb2
 from dcs.trigger.v0 import trigger_pb2 as _trigger_pb2
+from dcs.tts.v0 import tts_pb2 as _tts_pb2
 from dcs.unit.v0 import unit_pb2 as _unit_pb2
 from dcs.world.v0 import world_pb2 as _world_pb2
 from google.protobuf import descriptor as _descriptor

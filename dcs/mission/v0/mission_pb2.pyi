@@ -13,7 +13,7 @@ class StreamEventsRequest(_message.Message):
     def __init__(self) -> None: ...
 
 class StreamEventsResponse(_message.Message):
-    __slots__ = ["time", "shot", "hit", "takeoff", "land", "crash", "ejection", "refueling", "dead", "pilot_dead", "base_capture", "mission_start", "mission_end", "refueling_stop", "birth", "human_failure", "detailed_failure", "engine_startup", "engine_shutdown", "player_enter_unit", "player_leave_unit", "shooting_start", "shooting_end", "mark_add", "mark_change", "mark_remove", "kill", "score", "unit_lost", "landing_after_ejection", "discard_chair_after_ejection", "weapon_add", "landing_quality_mark", "connect", "disconnect", "player_send_chat", "player_change_slot", "mission_command", "coalition_command", "group_command"]
+    __slots__ = ["time", "shot", "hit", "takeoff", "land", "crash", "ejection", "refueling", "dead", "pilot_dead", "base_capture", "mission_start", "mission_end", "refueling_stop", "birth", "human_failure", "detailed_failure", "engine_startup", "engine_shutdown", "player_enter_unit", "player_leave_unit", "shooting_start", "shooting_end", "mark_add", "mark_change", "mark_remove", "kill", "score", "unit_lost", "landing_after_ejection", "discard_chair_after_ejection", "weapon_add", "landing_quality_mark", "connect", "disconnect", "player_send_chat", "player_change_slot", "mission_command", "coalition_command", "group_command", "simulation_fps", "tts"]
     class DisconnectReason(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
         __slots__ = []
         DISCONNECT_REASON_UNSPECIFIED: _ClassVar[StreamEventsResponse.DisconnectReason]
@@ -323,6 +323,22 @@ class StreamEventsResponse(_message.Message):
         group: _common_pb2.Group
         details: _struct_pb2.Struct
         def __init__(self, group: _Optional[_Union[_common_pb2.Group, _Mapping]] = ..., details: _Optional[_Union[_struct_pb2.Struct, _Mapping]] = ...) -> None: ...
+    class SimulationFpsEvent(_message.Message):
+        __slots__ = ["average"]
+        AVERAGE_FIELD_NUMBER: _ClassVar[int]
+        average: float
+        def __init__(self, average: _Optional[float] = ...) -> None: ...
+    class TtsEvent(_message.Message):
+        __slots__ = ["text", "frequency", "coalition", "srs_client_name"]
+        TEXT_FIELD_NUMBER: _ClassVar[int]
+        FREQUENCY_FIELD_NUMBER: _ClassVar[int]
+        COALITION_FIELD_NUMBER: _ClassVar[int]
+        SRS_CLIENT_NAME_FIELD_NUMBER: _ClassVar[int]
+        text: str
+        frequency: int
+        coalition: _common_pb2.Coalition
+        srs_client_name: str
+        def __init__(self, text: _Optional[str] = ..., frequency: _Optional[int] = ..., coalition: _Optional[_Union[_common_pb2.Coalition, str]] = ..., srs_client_name: _Optional[str] = ...) -> None: ...
     TIME_FIELD_NUMBER: _ClassVar[int]
     SHOT_FIELD_NUMBER: _ClassVar[int]
     HIT_FIELD_NUMBER: _ClassVar[int]
@@ -363,6 +379,8 @@ class StreamEventsResponse(_message.Message):
     MISSION_COMMAND_FIELD_NUMBER: _ClassVar[int]
     COALITION_COMMAND_FIELD_NUMBER: _ClassVar[int]
     GROUP_COMMAND_FIELD_NUMBER: _ClassVar[int]
+    SIMULATION_FPS_FIELD_NUMBER: _ClassVar[int]
+    TTS_FIELD_NUMBER: _ClassVar[int]
     time: float
     shot: StreamEventsResponse.ShotEvent
     hit: StreamEventsResponse.HitEvent
@@ -403,7 +421,9 @@ class StreamEventsResponse(_message.Message):
     mission_command: StreamEventsResponse.MissionCommandEvent
     coalition_command: StreamEventsResponse.CoalitionCommandEvent
     group_command: StreamEventsResponse.GroupCommandEvent
-    def __init__(self, time: _Optional[float] = ..., shot: _Optional[_Union[StreamEventsResponse.ShotEvent, _Mapping]] = ..., hit: _Optional[_Union[StreamEventsResponse.HitEvent, _Mapping]] = ..., takeoff: _Optional[_Union[StreamEventsResponse.TakeoffEvent, _Mapping]] = ..., land: _Optional[_Union[StreamEventsResponse.LandEvent, _Mapping]] = ..., crash: _Optional[_Union[StreamEventsResponse.CrashEvent, _Mapping]] = ..., ejection: _Optional[_Union[StreamEventsResponse.EjectionEvent, _Mapping]] = ..., refueling: _Optional[_Union[StreamEventsResponse.RefuelingEvent, _Mapping]] = ..., dead: _Optional[_Union[StreamEventsResponse.DeadEvent, _Mapping]] = ..., pilot_dead: _Optional[_Union[StreamEventsResponse.PilotDeadEvent, _Mapping]] = ..., base_capture: _Optional[_Union[StreamEventsResponse.BaseCaptureEvent, _Mapping]] = ..., mission_start: _Optional[_Union[StreamEventsResponse.MissionStartEvent, _Mapping]] = ..., mission_end: _Optional[_Union[StreamEventsResponse.MissionEndEvent, _Mapping]] = ..., refueling_stop: _Optional[_Union[StreamEventsResponse.RefuelingStopEvent, _Mapping]] = ..., birth: _Optional[_Union[StreamEventsResponse.BirthEvent, _Mapping]] = ..., human_failure: _Optional[_Union[StreamEventsResponse.HumanFailureEvent, _Mapping]] = ..., detailed_failure: _Optional[_Union[StreamEventsResponse.DetailedFailureEvent, _Mapping]] = ..., engine_startup: _Optional[_Union[StreamEventsResponse.EngineStartupEvent, _Mapping]] = ..., engine_shutdown: _Optional[_Union[StreamEventsResponse.EngineShutdownEvent, _Mapping]] = ..., player_enter_unit: _Optional[_Union[StreamEventsResponse.PlayerEnterUnitEvent, _Mapping]] = ..., player_leave_unit: _Optional[_Union[StreamEventsResponse.PlayerLeaveUnitEvent, _Mapping]] = ..., shooting_start: _Optional[_Union[StreamEventsResponse.ShootingStartEvent, _Mapping]] = ..., shooting_end: _Optional[_Union[StreamEventsResponse.ShootingEndEvent, _Mapping]] = ..., mark_add: _Optional[_Union[StreamEventsResponse.MarkAddEvent, _Mapping]] = ..., mark_change: _Optional[_Union[StreamEventsResponse.MarkChangeEvent, _Mapping]] = ..., mark_remove: _Optional[_Union[StreamEventsResponse.MarkRemoveEvent, _Mapping]] = ..., kill: _Optional[_Union[StreamEventsResponse.KillEvent, _Mapping]] = ..., score: _Optional[_Union[StreamEventsResponse.ScoreEvent, _Mapping]] = ..., unit_lost: _Optional[_Union[StreamEventsResponse.UnitLostEvent, _Mapping]] = ..., landing_after_ejection: _Optional[_Union[StreamEventsResponse.LandingAfterEjectionEvent, _Mapping]] = ..., discard_chair_after_ejection: _Optional[_Union[StreamEventsResponse.DiscardChairAfterEjectionEvent, _Mapping]] = ..., weapon_add: _Optional[_Union[StreamEventsResponse.WeaponAddEvent, _Mapping]] = ..., landing_quality_mark: _Optional[_Union[StreamEventsResponse.LandingQualityMarkEvent, _Mapping]] = ..., connect: _Optional[_Union[StreamEventsResponse.ConnectEvent, _Mapping]] = ..., disconnect: _Optional[_Union[StreamEventsResponse.DisconnectEvent, _Mapping]] = ..., player_send_chat: _Optional[_Union[StreamEventsResponse.PlayerSendChatEvent, _Mapping]] = ..., player_change_slot: _Optional[_Union[StreamEventsResponse.PlayerChangeSlotEvent, _Mapping]] = ..., mission_command: _Optional[_Union[StreamEventsResponse.MissionCommandEvent, _Mapping]] = ..., coalition_command: _Optional[_Union[StreamEventsResponse.CoalitionCommandEvent, _Mapping]] = ..., group_command: _Optional[_Union[StreamEventsResponse.GroupCommandEvent, _Mapping]] = ...) -> None: ...
+    simulation_fps: StreamEventsResponse.SimulationFpsEvent
+    tts: StreamEventsResponse.TtsEvent
+    def __init__(self, time: _Optional[float] = ..., shot: _Optional[_Union[StreamEventsResponse.ShotEvent, _Mapping]] = ..., hit: _Optional[_Union[StreamEventsResponse.HitEvent, _Mapping]] = ..., takeoff: _Optional[_Union[StreamEventsResponse.TakeoffEvent, _Mapping]] = ..., land: _Optional[_Union[StreamEventsResponse.LandEvent, _Mapping]] = ..., crash: _Optional[_Union[StreamEventsResponse.CrashEvent, _Mapping]] = ..., ejection: _Optional[_Union[StreamEventsResponse.EjectionEvent, _Mapping]] = ..., refueling: _Optional[_Union[StreamEventsResponse.RefuelingEvent, _Mapping]] = ..., dead: _Optional[_Union[StreamEventsResponse.DeadEvent, _Mapping]] = ..., pilot_dead: _Optional[_Union[StreamEventsResponse.PilotDeadEvent, _Mapping]] = ..., base_capture: _Optional[_Union[StreamEventsResponse.BaseCaptureEvent, _Mapping]] = ..., mission_start: _Optional[_Union[StreamEventsResponse.MissionStartEvent, _Mapping]] = ..., mission_end: _Optional[_Union[StreamEventsResponse.MissionEndEvent, _Mapping]] = ..., refueling_stop: _Optional[_Union[StreamEventsResponse.RefuelingStopEvent, _Mapping]] = ..., birth: _Optional[_Union[StreamEventsResponse.BirthEvent, _Mapping]] = ..., human_failure: _Optional[_Union[StreamEventsResponse.HumanFailureEvent, _Mapping]] = ..., detailed_failure: _Optional[_Union[StreamEventsResponse.DetailedFailureEvent, _Mapping]] = ..., engine_startup: _Optional[_Union[StreamEventsResponse.EngineStartupEvent, _Mapping]] = ..., engine_shutdown: _Optional[_Union[StreamEventsResponse.EngineShutdownEvent, _Mapping]] = ..., player_enter_unit: _Optional[_Union[StreamEventsResponse.PlayerEnterUnitEvent, _Mapping]] = ..., player_leave_unit: _Optional[_Union[StreamEventsResponse.PlayerLeaveUnitEvent, _Mapping]] = ..., shooting_start: _Optional[_Union[StreamEventsResponse.ShootingStartEvent, _Mapping]] = ..., shooting_end: _Optional[_Union[StreamEventsResponse.ShootingEndEvent, _Mapping]] = ..., mark_add: _Optional[_Union[StreamEventsResponse.MarkAddEvent, _Mapping]] = ..., mark_change: _Optional[_Union[StreamEventsResponse.MarkChangeEvent, _Mapping]] = ..., mark_remove: _Optional[_Union[StreamEventsResponse.MarkRemoveEvent, _Mapping]] = ..., kill: _Optional[_Union[StreamEventsResponse.KillEvent, _Mapping]] = ..., score: _Optional[_Union[StreamEventsResponse.ScoreEvent, _Mapping]] = ..., unit_lost: _Optional[_Union[StreamEventsResponse.UnitLostEvent, _Mapping]] = ..., landing_after_ejection: _Optional[_Union[StreamEventsResponse.LandingAfterEjectionEvent, _Mapping]] = ..., discard_chair_after_ejection: _Optional[_Union[StreamEventsResponse.DiscardChairAfterEjectionEvent, _Mapping]] = ..., weapon_add: _Optional[_Union[StreamEventsResponse.WeaponAddEvent, _Mapping]] = ..., landing_quality_mark: _Optional[_Union[StreamEventsResponse.LandingQualityMarkEvent, _Mapping]] = ..., connect: _Optional[_Union[StreamEventsResponse.ConnectEvent, _Mapping]] = ..., disconnect: _Optional[_Union[StreamEventsResponse.DisconnectEvent, _Mapping]] = ..., player_send_chat: _Optional[_Union[StreamEventsResponse.PlayerSendChatEvent, _Mapping]] = ..., player_change_slot: _Optional[_Union[StreamEventsResponse.PlayerChangeSlotEvent, _Mapping]] = ..., mission_command: _Optional[_Union[StreamEventsResponse.MissionCommandEvent, _Mapping]] = ..., coalition_command: _Optional[_Union[StreamEventsResponse.CoalitionCommandEvent, _Mapping]] = ..., group_command: _Optional[_Union[StreamEventsResponse.GroupCommandEvent, _Mapping]] = ..., simulation_fps: _Optional[_Union[StreamEventsResponse.SimulationFpsEvent, _Mapping]] = ..., tts: _Optional[_Union[StreamEventsResponse.TtsEvent, _Mapping]] = ...) -> None: ...
 
 class StreamUnitsRequest(_message.Message):
     __slots__ = ["poll_rate", "max_backoff", "category"]
@@ -416,7 +436,7 @@ class StreamUnitsRequest(_message.Message):
     def __init__(self, poll_rate: _Optional[int] = ..., max_backoff: _Optional[int] = ..., category: _Optional[_Union[_common_pb2.GroupCategory, str]] = ...) -> None: ...
 
 class StreamUnitsResponse(_message.Message):
-    __slots__ = ["unit", "gone"]
+    __slots__ = ["time", "unit", "gone"]
     class UnitGone(_message.Message):
         __slots__ = ["id", "name"]
         ID_FIELD_NUMBER: _ClassVar[int]
@@ -424,11 +444,13 @@ class StreamUnitsResponse(_message.Message):
         id: int
         name: str
         def __init__(self, id: _Optional[int] = ..., name: _Optional[str] = ...) -> None: ...
+    TIME_FIELD_NUMBER: _ClassVar[int]
     UNIT_FIELD_NUMBER: _ClassVar[int]
     GONE_FIELD_NUMBER: _ClassVar[int]
+    time: float
     unit: _common_pb2.Unit
     gone: StreamUnitsResponse.UnitGone
-    def __init__(self, unit: _Optional[_Union[_common_pb2.Unit, _Mapping]] = ..., gone: _Optional[_Union[StreamUnitsResponse.UnitGone, _Mapping]] = ...) -> None: ...
+    def __init__(self, time: _Optional[float] = ..., unit: _Optional[_Union[_common_pb2.Unit, _Mapping]] = ..., gone: _Optional[_Union[StreamUnitsResponse.UnitGone, _Mapping]] = ...) -> None: ...
 
 class GetScenarioStartTimeRequest(_message.Message):
     __slots__ = []
@@ -581,3 +603,13 @@ class RemoveGroupCommandItemRequest(_message.Message):
 class RemoveGroupCommandItemResponse(_message.Message):
     __slots__ = []
     def __init__(self) -> None: ...
+
+class GetSessionIdRequest(_message.Message):
+    __slots__ = []
+    def __init__(self) -> None: ...
+
+class GetSessionIdResponse(_message.Message):
+    __slots__ = ["session_id"]
+    SESSION_ID_FIELD_NUMBER: _ClassVar[int]
+    session_id: int
+    def __init__(self, session_id: _Optional[int] = ...) -> None: ...

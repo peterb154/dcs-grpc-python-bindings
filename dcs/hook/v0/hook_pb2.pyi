@@ -196,3 +196,23 @@ class GetUnitTypeResponse(_message.Message):
     TYPE_FIELD_NUMBER: _ClassVar[int]
     type: str
     def __init__(self, type: _Optional[str] = ...) -> None: ...
+
+class GetRealTimeRequest(_message.Message):
+    __slots__ = []
+    def __init__(self) -> None: ...
+
+class GetRealTimeResponse(_message.Message):
+    __slots__ = ["time"]
+    TIME_FIELD_NUMBER: _ClassVar[int]
+    time: float
+    def __init__(self, time: _Optional[float] = ...) -> None: ...
+
+class GetBallisticsCountRequest(_message.Message):
+    __slots__ = []
+    def __init__(self) -> None: ...
+
+class GetBallisticsCountResponse(_message.Message):
+    __slots__ = ["count"]
+    COUNT_FIELD_NUMBER: _ClassVar[int]
+    count: int
+    def __init__(self, count: _Optional[int] = ...) -> None: ...
