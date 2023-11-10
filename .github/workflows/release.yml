@@ -2,8 +2,7 @@ name: Publish
 
 on:
   release:
-    branches:
-      - main
+    types: [released]
 
 jobs:
   publish:
@@ -22,8 +21,10 @@ jobs:
           cd ..
       - run: make build
       - run: make test
-      - name: Publish
+      - name: Publish to PyPi Test
+        env:
+          PYPI_TEST_API_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
         run: |
           poetry config repositories.pypi-test https://test.pypi.org/legacy/
-          poetry config pypi-token.pypi ${{ secrets.PYPI_TEST_API_TOKEN }}
+          poetry config pypi-token.pypi ${{ PYPI_TEST_API_TOKEN }}
           poetry publish --build -r pypi-test
