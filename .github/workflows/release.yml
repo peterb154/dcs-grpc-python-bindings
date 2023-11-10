@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  release:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - uses: snok/install-poetry@v1
+      - run: poetry install --no-root
+      - name: Checkout rust-server release matching project version
+        run: |
+          git submodule init
+          git submodule update
+          cd rust-server
+          git checkout $(poetry version -s)
+          cd ..
+      - run: make build
+      - run: make test
+      - name: Publish
+        run: |
+          poetry config repositories.pypi-test https://test.pypi.org/legacy/
+          poetry config pypi-token.pypi ${{ secrets.PYPI_TEST_API_TOKEN }}
+          poetry publish --build -r pypi-test

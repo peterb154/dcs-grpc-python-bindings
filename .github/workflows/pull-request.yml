@@ -1,0 +1,22 @@
+name: Pull Request
+on:
+  pull_request
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-python@v3
+        - uses: snok/install-poetry@v1
+        - run: poetry install --no-root
+        - name: Checkout rust-server release matching project version
+          run: |
+            git submodule init
+            git submodule update
+            cd rust-server
+            git checkout $(poetry version -s)
+            cd ..
+        - run: make build
+        - run: make test
+        - run: poetry build
